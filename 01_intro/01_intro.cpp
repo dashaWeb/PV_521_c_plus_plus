@@ -8,7 +8,7 @@ using std::boolalpha;
 int main()
 {
     //cout << " \\He\bllo\\ World! \n";
-    cout << " \t I \"love\" \a 'C++' " << endl;
+    std::cout << " \t I \"love\" \a 'C++' " << endl;
     cout << R"(
         I                  I
             Love    Love
