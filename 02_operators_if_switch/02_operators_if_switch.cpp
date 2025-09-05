@@ -163,6 +163,7 @@ int main()
 
 	 // 10.4
 	 // (3)березень (31) + (2)лютий(28 або 29) + (1)січень(31) + 10
+	 // 31 + 28 + 31 + 10
 	int day, month;
 	cout << "Enter dd mm :: ";
 	cin >> day >> month;
@@ -198,4 +199,10 @@ int main()
 	}
 	all_days += day;
 	cout << "All days :: " << all_days << endl;
+
+	int numb = 1234;
+	int a = numb % 10; // 4
+	numb /= 10; // 1234 / 10 = 123
+	int b = numb % 10; // 3
+	numb /= 10;
 }
