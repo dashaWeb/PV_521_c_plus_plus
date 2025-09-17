@@ -92,7 +92,16 @@ int main()
 	//	cin >> a >> op >> b;
 	//	cout << a << " " << op << " " << b << " = " << calculate(a, b, op) << endl;
 	//}
-	showMessage(20);
-	showMessage(20, "Masha");
+	/*showMessage(20);
+	showMessage(20, "Masha");*/
+
+	// 5 x 3
+	/*
+	*****
+	*****
+	*****
+	*/
+	// !5 = 1 * 2 * 3 * 4 * 5
+
 }
 
