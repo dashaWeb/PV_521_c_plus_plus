@@ -43,3 +43,40 @@ void pushBack(int* &arr, int& size, int value)
 	deleteArray(arr);
 	arr = tmp;
 }
+
+void popFront(int*& arr, int& size)
+{
+	int* tmp = new int[--size];
+
+	for (size_t i = 0; i < size; i++)
+	{
+		tmp[i] = arr[i + 1];
+	}
+	deleteArray(arr);
+	arr = tmp;
+}
+
+void insert(int*& arr, int& size, int value, int index)
+{
+	if (index < 0 or index > size) {
+		cout << "Error index." << endl;
+		return;
+	}
+
+	
+	int* tmp = new int[++size];
+	
+	for (size_t i = 0, j = 0; i < size; i++)
+	{
+		if (i == index)
+		{
+			tmp[i] = value;
+			continue;
+		}
+
+		tmp[i] = arr[j++];
+	}
+
+	deleteArray(arr);
+	arr = tmp;
+}

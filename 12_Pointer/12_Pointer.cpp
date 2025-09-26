@@ -3,7 +3,12 @@
 
 using namespace std;
 
-
+//void Swap(int* one, int* two)
+//{
+//    int tmp = *one;
+//    *one = *two;
+//    *two = tmp;
+//}
 
 void Swap(int& first, int& second)
 {
