@@ -95,6 +95,97 @@ void remove(T**& arr, int& row, const int& index)
 //Написати функцію, що видаляє рядок двовимірного масиву в кінці.
 //Написати функцію, що видаляє рядок двовимірного масиву на початку.
 
+template<typename T>
+void pushBack(T**& arr, int& row, const int& col)
+{
+    insert(arr, row, col, row);
+}
+
+template<typename T>
+void pushFront(T**& arr, int& row, const int& col)
+{
+    insert(arr, row, col, 0);
+}
+
+template<typename T>
+void popBack(T**& arr, int& row)
+{
+    remove(arr, row, row - 1);
+}
+
+template<typename T>
+void popFront(T**& arr, int& row)
+{
+    remove(arr, row, 0);
+}
+void deleteArray(int*& arr)
+{
+    delete[] arr;
+    arr = nullptr;
+}
+void insert(int*& arr, int& size, int value, int index)
+{
+    if (index < 0 or index > size) {
+        cout << "Error index." << endl;
+        return;
+    }
+    int* tmp = new int[++size];
+    for (size_t i = 0, j = 0; i < size; i++)
+    {
+        if (i == index)
+        {
+            tmp[i] = value;
+            continue;
+        }
+
+        tmp[i] = arr[j++];
+    }
+
+    deleteArray(arr);
+    arr = tmp;
+}
+
+void remove(int*& arr, int& size,int index)
+{
+    if (index < 0 or index >= size) {
+        cout << "Error index." << endl;
+        return;
+    }
+    int* tmp = new int[--size];
+    for (size_t i = 0, j = 0; i <= size; i++)
+    {
+        if (i == index)
+        {
+            continue;
+        }
+
+        tmp[j++] = arr[i];
+    }
+    deleteArray(arr);
+    arr = tmp;
+}
+
+template<typename T>
+void insertColumn(T** arr, const int& row, int& col, const int& index, const T& value = T())
+{
+    for (size_t i = 0; i < row; i++)
+    {
+        int tmp = col;
+        insert(arr[i], tmp, value, index);
+    }
+    col++;
+}
+
+template<typename T>
+void removeColumn(T** arr, const int& row, int& col, const int& index)
+{
+    for (size_t i = 0; i < row; i++)
+    {
+        int tmp = col;
+        remove(arr[i], tmp, index);
+    }
+    col--;
+}
 int main()
 {
     
@@ -120,6 +211,15 @@ int main()
     remove(arr, row, 1);
     print(arr, row, col, "Print remove ");
 
+
+    cout << endl;
+    insertColumn(arr, row,col,2);
+    print(arr, row, col, "Print insertColumn ");
+
+    cout << endl;
+    removeColumn(arr, row, col, 3);
+    print(arr, row, col, "Print removeColumn ");
+
     // delete mult array
     for (size_t i = 0; i < row; i++)
     {
@@ -128,6 +228,7 @@ int main()
     delete[] arr;
     arr = nullptr;
 
-
+   
+    
 
 }
