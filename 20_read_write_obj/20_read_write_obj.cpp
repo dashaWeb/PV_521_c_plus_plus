@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 
 const size_t SIZE = 50;
@@ -78,31 +79,71 @@ int main()
 		file.close();*/
 
 
-	// читання з файлу книг у масив
-	fstream file("data.txt", ios_base::in);
+		// читання з файлу книг у масив
+		/*fstream file("data.txt", ios_base::in);
+		if (!file.is_open())
+		{
+			cout << "File not found" << endl;
+			return 0;
+		}
+		cout << file.tellg() << endl;
+		file.seekg(0, ios_base::end);
+		cout << file.tellg() << endl;
+		int size = file.tellg() / sizeof(Book);
+		cout << "Number of books :: " << size << endl;
+
+		file.seekg(0, ios_base::beg);
+		cout << file.tellg() << endl;
+
+		Book* res = new Book[size];
+		for (size_t i = 0; i < size; i++)
+		{
+			file.read((char*)&res[i], sizeof(Book));
+		}
+		file.close();
+		for (size_t i = 0; i < size; i++)
+		{
+			printBook(res[i]);
+			cout << endl;
+		}*/
+
+		//remove("text.txt");
+		/*fstream file("text.txt", ios_base::out | ios_base::in | ios_base::app);
+		if (!file.is_open())
+		{
+			cout << "File not found" << endl;
+			return 0;
+		}
+		string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque aliquam augue enim, eu efficitur nisi blandit id. Nullam venenatis, leo gravida consequat convallis, erat nunc feugiat odio, id finibus erat urna eu lectus. Cras turpis nibh, fringilla eu erat a, facilisis gravida orci. Phasellus vestibulum neque quis sem interdum, vitae ornare libero tristique. Pellentesque hendrerit at turpis eget venenatis. Integer in tortor vulputate, tempor ipsum vel, pretium neque. Nulla sodales, justo maximus pulvinar commodo, lacus neque elementum lectus, sed semper mi turpis eu purus. Pellentesque sodales eu quam sit amet pellentesque. Suspendisse commodo sit amet felis vel vulputate. Nullam sed orci eu elit maximus vulputate sed ac mauris. Pellentesque sed est quis lorem cursus bibendum. Duis varius quam ac nibh facilisis, ac dictum nulla dictum.\n";
+
+		file << text;
+
+		file.seekg(0);
+
+		string all_text = "";
+		while (getline(file, text))
+		{
+			all_text += text + "\n";
+		}
+		cout << "Result " << all_text << endl;*/
+
+	fstream file("text.dat", ios_base::out | ios_base::in | ios_base::app | ios_base::binary);
 	if (!file.is_open())
 	{
 		cout << "File not found" << endl;
 		return 0;
 	}
-	cout << file.tellg() << endl;
-	file.seekg(0, ios_base::end);
-	cout << file.tellg() << endl;
-	int size = file.tellg() / sizeof(Book);
-	cout << "Number of books :: " << size << endl;
+	string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque aliquam augue enim, eu efficitur nisi blandit id. Nullam venenatis, leo gravida consequat convallis, erat nunc feugiat odio, id finibus erat urna eu lectus. Cras turpis nibh, fringilla eu erat a, facilisis gravida orci. Phasellus vestibulum neque quis sem interdum, vitae ornare libero tristique. Pellentesque hendrerit at turpis eget venenatis. Integer in tortor vulputate, tempor ipsum vel, pretium neque. Nulla sodales, justo maximus pulvinar commodo, lacus neque elementum lectus, sed semper mi turpis eu purus. Pellentesque sodales eu quam sit amet pellentesque. Suspendisse commodo sit amet felis vel vulputate. Nullam sed orci eu elit maximus vulputate sed ac mauris. Pellentesque sed est quis lorem cursus bibendum. Duis varius quam ac nibh facilisis, ac dictum nulla dictum.\n";
 
-	file.seekg(0, ios_base::beg);
-	cout << file.tellg() << endl;
+	file << text;
 
-	Book* res = new Book[size];
-	for (size_t i = 0; i < size; i++)
+	file.seekg(0);
+
+	string all_text = "";
+	while (getline(file, text))
 	{
-		file.read((char*)&res[i], sizeof(Book));
+		all_text += text + "\n";
 	}
-	file.close();
-	for (size_t i = 0; i < size; i++)
-	{
-		printBook(res[i]);
-		cout << endl;
-	}
+	cout << "Result " << all_text << endl;
+
 }
