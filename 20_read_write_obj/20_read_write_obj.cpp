@@ -4,8 +4,13 @@
 using namespace std;
 
 const size_t SIZE = 50;
+enum Type
+{
+	BOOK, Magazine, Newspaper
+};
 struct Book
 {
+	Type type = Type::BOOK;
 	char name[SIZE]{};
 	char author[SIZE]{};
 	char publisher[SIZE]{};
